@@ -1,0 +1,24 @@
+void bfs(int s)
+{
+	queue<int> q;
+	q.push(s);
+
+	vector<char> u(n);
+	vi d(n);
+	u[s] = true;
+	d[s] = -1;
+	while (!q.empty())
+	{
+		int v = q.front();
+		q.pop();
+		for (auto i : g[v])
+		{
+			if (!u[i])
+			{
+				u[i] = true;
+				q.push(i);
+				d[i] = d[v] + 1;
+			}
+		}
+	}
+}
